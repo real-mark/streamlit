@@ -62,15 +62,10 @@ def open_predefined_file(file_name):
 # Checkbox for user selection
 #use_predefined_file = st.checkbox("Use pre-defined file (NEW April.xlsx)")
 
-# If ststement to choose wether to use predefined path or to choose your own file
-
-if use_predefined_file:
-  data = open_predefined_file("NEW April.xlsx")
-else:
-  # File upload functionality
-  file = st.file_uploader(":file_folder: Please upload your files here", type=None)  # Allow all types
-  if file is not None:
-    data = read_file(file)
+# File upload functionality
+file = st.file_uploader(":file_folder: Please upload your files here", type=None)  # Allow all types
+if file is not None:
+   data = read_file(file)
 
 if data is not None:
   # Process the data from the DataFrame (e.g., print, visualize)
