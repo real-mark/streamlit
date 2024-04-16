@@ -60,7 +60,7 @@ def open_predefined_file(file_name):
 
 
 # Checkbox for user selection
-use_predefined_file = st.checkbox("Use pre-defined file (NEW April.xlsx)")
+#use_predefined_file = st.checkbox("Use pre-defined file (NEW April.xlsx)")
 
 # If ststement to choose wether to use predefined path or to choose your own file
 
