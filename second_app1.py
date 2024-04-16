@@ -63,7 +63,9 @@ def open_predefined_file(file_name):
 
 # File upload functionality
 file = st.file_uploader(":file_folder: Please upload your files here", type=None)  # Allow all types
-data = read_file(file)
+
+if file is not None:
+  data = read_file(file)
 
 if data is not None:
   # Process the data from the DataFrame (e.g., print, visualize)
