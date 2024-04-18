@@ -18,7 +18,7 @@ API_URL = "https://vsqpkhtgjpfsuvodvzcc.supabase.co"
 API_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZzcXBraHRnanBmc3V2b2R2emNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM0NjI3NzUsImV4cCI6MjAyOTAzODc3NX0.pWepouZCeMDjPfYbn3uUpwdMbQNB69-dX8oo_gz2SpM
 supabase = create_client(API_URL, API_KEY)
 
-@st.cache_data():
+@st.cache_data()
 def fetch_data():
   supabaseList = supabase.table("Express_data").select("*").excecute().data
   data = pd.DataFrame(supabaseList)
