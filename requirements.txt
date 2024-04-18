@@ -2,3 +2,4 @@ openpyxl
 streamlit
 plotly
 plotly-express
+supabase
