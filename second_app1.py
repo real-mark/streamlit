@@ -4,7 +4,9 @@ import pandas as pd
 import os
 import warnings
 import openpyxl
+from supabase import create_client
 warnings.filterwarnings('ignore')
+
 
 st.set_page_config(page_title= "First_streamlit app!!!", page_icon= ":bar_chart", layout="wide")
 #display page title
@@ -12,11 +14,14 @@ st.title(":new_moon_with_face: Mark's Second Streamlit app")
 #Using CSS to customise the site
 st.markdown('<style>div.block-container{padding-top:2rem;}</style>',unsafe_allow_html=True)
 
-#@st.cache(allow_output_mutation = True)
-#def load_data(file_name):
-#  nlp = spacy.load(file_name)
-#  return (nlp)
-#nlp = load_data("en_core_web_lg")
+API_URL = "https://vsqpkhtgjpfsuvodvzcc.supabase.co"
+API_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZzcXBraHRnanBmc3V2b2R2emNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM0NjI3NzUsImV4cCI6MjAyOTAzODc3NX0.pWepouZCeMDjPfYbn3uUpwdMbQNB69-dX8oo_gz2SpM
+supabase = create_client(API_URL, API_KEY)
+
+@st.cache_data():
+def fetch_data():
+  supabaseList = supabase.table("Express_data").select("*").excecute().data
+  data = pd.DataFrame(supabaseList)
 
 @st.cache_data
 def read_file(file):
@@ -58,14 +63,16 @@ def open_predefined_file(file_name):
   return df
 
 
-# Checkbox for user selection
-#use_predefined_file = st.checkbox("Use pre-defined file (NEW April.xlsx)")
+# Checkbox for user selection of file on PC
+upload_local_file = st.checkbox("I want to upload my own file (File_name.file_extension)")
 
-# File upload functionality
-file = st.file_uploader(":file_folder: Please upload your files here", type=None)  # Allow all types
-
-if file is not None:
+#if file is not None:
+if upload_local_file:
+  # File upload functionality
+  file = st.file_uploader(":file_folder: Please upload your files here", type=None)  # Allow all types
   data = read_file(file)
+else:
+  fetch_data()
 
 if data is not None:
   # Process the data from the DataFrame (e.g., print, visualize)
