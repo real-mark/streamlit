@@ -15,7 +15,7 @@ st.title(":new_moon_with_face: Mark's Second Streamlit app")
 st.markdown('<style>div.block-container{padding-top:2rem;}</style>',unsafe_allow_html=True)
 
 API_URL = "https://vsqpkhtgjpfsuvodvzcc.supabase.co"
-API_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZzcXBraHRnanBmc3V2b2R2emNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM0NjI3NzUsImV4cCI6MjAyOTAzODc3NX0.pWepouZCeMDjPfYbn3uUpwdMbQNB69-dX8oo_gz2SpM
+API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZzcXBraHRnanBmc3V2b2R2emNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM0NjI3NzUsImV4cCI6MjAyOTAzODc3NX0.pWepouZCeMDjPfYbn3uUpwdMbQNB69-dX8oo_gz2SpM'
 supabase = create_client(API_URL, API_KEY)
 
 @st.cache_data()
